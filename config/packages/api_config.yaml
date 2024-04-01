@@ -1,0 +1,7 @@
+# config/packages/api_config.yaml
+parameters:
+    api_shoper_token: ''
+    api_shoper_url: ''
+    api_b2b_customers_key: ''
+    api_customers_secret: ''
+    api_b2b_url: ''

@@ -23,8 +23,6 @@ use Symfony\Component\Security\Core\Authorization\Voter\Voter;
  * See https://symfony.com/doc/current/security/voters.html
  *
  * @author Yonel Ceruto <yonelceruto@gmail.com>
- *
- * @extends Voter<non-empty-string, Post>
  */
 final class PostVoter extends Voter
 {
@@ -34,7 +32,10 @@ final class PostVoter extends Voter
     public const EDIT = 'edit';
     public const SHOW = 'show';
 
-    protected function supports(string $attribute, mixed $subject): bool
+    /**
+     * @phpstan-param object $subject
+     */
+    protected function supports(string $attribute, $subject): bool
     {
         // this voter is only executed on Post objects and for three specific permissions
         return $subject instanceof Post && \in_array($attribute, [self::SHOW, self::EDIT, self::DELETE], true);

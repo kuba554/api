@@ -1,0 +1,93 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ProductStock index{% endblock %}
+
+{% block body %}
+    <h1>ProductStock index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Stock_id</th>
+                <th>Product_id</th>
+                <th>Price</th>
+                <th>Extended</th>
+                <th>Price_type</th>
+                <th>Active</th>
+                <th>Default_stock</th>
+                <th>Stock</th>
+                <th>Warehouses</th>
+                <th>Warn_level</th>
+                <th>Sold</th>
+                <th>Code</th>
+                <th>Ean</th>
+                <th>Weight</th>
+                <th>Weight_type</th>
+                <th>Availiability_id</th>
+                <th>Delivery_id</th>
+                <th>Gfx_id</th>
+                <th>Options</th>
+                <th>Package</th>
+                <th>Price_wholesale</th>
+                <th>Price_special</th>
+                <th>Price_type_wholesale</th>
+                <th>Price_type_special</th>
+                <th>Price_buying</th>
+                <th>Calculation_unit_id</th>
+                <th>Calculation_unit_ratio</th>
+                <th>Historical_lowest_price</th>
+                <th>Wholesale_historical_lowest_price</th>
+                <th>Special_historical_lowest_price</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for product_stock in product_stocks %}
+            <tr>
+                <td>{{ product_stock.id }}</td>
+                <td>{{ product_stock.stockId }}</td>
+                <td>{{ product_stock.productId }}</td>
+                <td>{{ product_stock.price }}</td>
+                <td>{{ product_stock.extended ? 'Yes' : 'No' }}</td>
+                <td>{{ product_stock.priceType }}</td>
+                <td>{{ product_stock.active ? 'Yes' : 'No' }}</td>
+                <td>{{ product_stock.defaultStock ? 'Yes' : 'No' }}</td>
+                <td>{{ product_stock.stock }}</td>
+                <td>{{ product_stock.warehouses ? product_stock.warehouses|join(', ') : '' }}</td>
+                <td>{{ product_stock.warnLevel }}</td>
+                <td>{{ product_stock.sold }}</td>
+                <td>{{ product_stock.code }}</td>
+                <td>{{ product_stock.ean }}</td>
+                <td>{{ product_stock.weight }}</td>
+                <td>{{ product_stock.weightType }}</td>
+                <td>{{ product_stock.availiabilityId }}</td>
+                <td>{{ product_stock.deliveryId }}</td>
+                <td>{{ product_stock.gfxId }}</td>
+                <td>{{ product_stock.options ? product_stock.options|join(', ') : '' }}</td>
+                <td>{{ product_stock.package }}</td>
+                <td>{{ product_stock.priceWholesale }}</td>
+                <td>{{ product_stock.priceSpecial }}</td>
+                <td>{{ product_stock.priceTypeWholesale }}</td>
+                <td>{{ product_stock.priceTypeSpecial }}</td>
+                <td>{{ product_stock.priceBuying }}</td>
+                <td>{{ product_stock.calculationUnitId }}</td>
+                <td>{{ product_stock.calculationUnitRatio }}</td>
+                <td>{{ product_stock.historicalLowestPrice }}</td>
+                <td>{{ product_stock.wholesaleHistoricalLowestPrice }}</td>
+                <td>{{ product_stock.specialHistoricalLowestPrice }}</td>
+                <td>
+                    <a href="{{ path('app_product_stock_show', {'stock_id': product_stock.stockId}) }}">show</a>
+                    <a href="{{ path('app_product_stock_edit', {'stock_id': product_stock.stockId}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="32">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_product_stock_new') }}">Create new</a>
+{% endblock %}

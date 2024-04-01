@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('ux-live-component') }}
+{% endblock %}
+
+{% block body_id 'product_search' %}
+
+{% block main %}
+    {# <form action="{{ path('app_product_search') }}" method="get">
+        <div class="form-group">
+            <input name="q"
+                   class="form-control search-field"
+                   placeholder="{{ 'product.search_for'|trans }}"
+                   autocomplete="off"
+                   value="{{ query }}"
+                   autofocus
+                   data-no-results-message="{{ 'product.search_no_results'|trans }}"
+            >
+        </div>
+    </form> #}
+    {{ component('product_search', {
+        query: query
+    }) }}
+
+    {# <div id="results">
+    </div> #}
+{% endblock %}
+
+{% block sidebar %}
+    {{ parent() }}
+
+    {{ show_source_code(_self) }}
+{% endblock %}

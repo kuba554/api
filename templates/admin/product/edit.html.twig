@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edycja produktu{% endblock %}
+
+{% block main %}
+    <div style="">
+        <h4>{{ product.name }} (id: {{ product.productId }})</h4>
+    </div>
+    {{ include('admin/product/_form.html.twig', {'button_label': 'Update'}) }}
+    <a href="{{ path('app_product_index') }}">Powrót do listy</a>
+{% endblock %}
+
+{% block sidebar %}
+    {% set newId = id %}
+    {{ include('admin/product/sidebar.html.twig', { 'id': newId}) }}
+    <div class="sidebar-item">
+    {% set parts = product.image|split('.') %}
+    {% if parts|length > 1 %}
+        <td><img width="100%" src="{{ 'https://zielonysklep.pl/userdata/public/gfx/' ~ product.gfxId ~ '/' ~ product.image }}" alt="Product Image"></td>
+    {% else %}
+        <td><img width="100%" src="{{ 'https://zielonysklep.pl/userdata/public/gfx/' ~ product.gfxId ~ '/' ~ product.image ~ '.jpg' }}" alt="Product Image"></td>
+    {% endif %}
+    </div>
+    <div class="sidebar-item">
+        <a href="{{ path('app_product_images_edit', {'product_id': product.productId }) }}">
+                Galeria
+        </a>
+    </div>
+    <div class="sidebar-item">
+        <a href="{{ path('app_categories_tree_edit', {'id': 1}) }}">
+                Kategoria dodatkowa
+        </a>
+    </div>
+    {% if stockVariants %}
+        <div class="sidebar-item variants">Warianty produktu
+            {% for item in stockVariants %}
+                <div><a href="{{ path('app_product_stock_edit', {'stock_id': item.stockId }) }}">[{{ item.stockId }}]-{{ item.size }}</a></div>
+            {% endfor %}
+        </div>
+    {% endif %}
+    {{ include('admin/product/_delete_form.html.twig') }}
+{% endblock %}

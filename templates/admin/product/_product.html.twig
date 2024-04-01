@@ -1,0 +1,23 @@
+<article class="post">
+    <h2>
+        <a class="post-metadata-title" href="{{ path('app_product_edit', {product_id:product.productId}) }}">
+            {{ product.name }}
+        </a>
+    </h2>
+    {% set parts = product.image|split('.') %}
+    {% if parts|length > 1 %}
+        <p class="post-metadata-image"><img width="60px" src="{{ 'https://zielonysklep.pl/userdata/public/gfx/' ~ product.gfxId ~ '/' ~ product.image }}" alt="Product Image"></p>
+    {% else %}
+        <p class="post-metadata-image"><img width="60px" src="{{ 'https://zielonysklep.pl/userdata/public/gfx/' ~ product.gfxId ~ '/' ~ product.image ~ '.jpg' }}" alt="Product Image"></p>
+    {% endif %}
+    <p class="post-metadata">
+        <span class="metadata"><i>ID: </i>{{ product.productId }}</span>
+        <span class="metadata"><i class="fa fa-calendar"></i> {{ product.dateEdit|format_datetime('long', 'medium', '', 'UTC') }}</span>
+        <span class="metadata"><i>SKU:</i> {{ product.sku }}</span>
+        <span class="metadata"><i>EAN:</i>{{ product.ean }}</span>
+    </p>
+
+    <p>{{ product.name }}</p>
+
+    {# {{ include('blog/_post_tags.html.twig') }} #}
+</article>

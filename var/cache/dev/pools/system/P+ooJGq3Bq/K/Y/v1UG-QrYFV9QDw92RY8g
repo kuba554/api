@@ -1,0 +1,3 @@
+<?php //b90d850297c4d7c5d4991df6ea5e38cf
+
+return [PHP_INT_MAX, 'vendor/bootstrap/js/dist/tab.js'];

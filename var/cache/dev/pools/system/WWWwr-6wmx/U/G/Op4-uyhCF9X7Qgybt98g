@@ -1,0 +1,3 @@
+<?php //317c52c8df034d6f8e08d2f8656474b6
+
+return [PHP_INT_MAX, 'bundles/fosckeditor/ckeditor.js'];

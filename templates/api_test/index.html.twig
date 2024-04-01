@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ApiTest index{% endblock %}
+
+{% block body %}
+    <h1>ApiTest index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Descryption</th>
+                <th>Value</th>
+                <th>CoolFactor</th>
+                <th>CreatedAt</th>
+                <th>IsPublished</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for api_test in api_tests %}
+            <tr>
+                <td>{{ api_test.id }}</td>
+                <td>{{ api_test.descryption }}</td>
+                <td>{{ api_test.value }}</td>
+                <td>{{ api_test.coolFactor }}</td>
+                <td>{{ api_test.createdAt ? api_test.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ api_test.isPublished ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('app_api_test_show', {'id': api_test.id}) }}">show</a>
+                    <a href="{{ path('app_api_test_edit', {'id': api_test.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_api_test_new') }}">Create new</a>
+{% endblock %}

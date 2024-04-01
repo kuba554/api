@@ -22,8 +22,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\SubmitButton;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Attribute\Route;
-use Symfony\Component\Routing\Requirement\Requirement;
+use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Attribute\CurrentUser;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 
@@ -53,7 +52,7 @@ final class BlogController extends AbstractController
      *     could move this annotation to any other controller while maintaining
      *     the route name and therefore, without breaking any existing link.
      */
-    #[Route('/', name: 'admin_index', methods: ['GET'])]
+    // #[Route('/', name: 'admin_index', methods: ['GET'])]
     #[Route('/', name: 'admin_post_index', methods: ['GET'])]
     public function index(
         #[CurrentUser] User $user,
@@ -119,7 +118,7 @@ final class BlogController extends AbstractController
     /**
      * Finds and displays a Post entity.
      */
-    #[Route('/{id}', name: 'admin_post_show', requirements: ['id' => Requirement::POSITIVE_INT], methods: ['GET'])]
+    #[Route('/{id<\d+>}', name: 'admin_post_show', methods: ['GET'])]
     public function show(Post $post): Response
     {
         // This security check can also be performed
@@ -134,7 +133,7 @@ final class BlogController extends AbstractController
     /**
      * Displays a form to edit an existing Post entity.
      */
-    #[Route('/{id}/edit', name: 'admin_post_edit', requirements: ['id' => Requirement::POSITIVE_INT], methods: ['GET', 'POST'])]
+    #[Route('/{id<\d+>}/edit', name: 'admin_post_edit', methods: ['GET', 'POST'])]
     #[IsGranted('edit', subject: 'post', message: 'Posts can only be edited by their authors.')]
     public function edit(Request $request, Post $post, EntityManagerInterface $entityManager): Response
     {
@@ -157,7 +156,7 @@ final class BlogController extends AbstractController
     /**
      * Deletes a Post entity.
      */
-    #[Route('/{id}/delete', name: 'admin_post_delete', requirements: ['id' => Requirement::POSITIVE_INT], methods: ['POST'])]
+    #[Route('/{id}/delete', name: 'admin_post_delete', methods: ['POST'])]
     #[IsGranted('delete', subject: 'post')]
     public function delete(Request $request, Post $post, EntityManagerInterface $entityManager): Response
     {

@@ -1,0 +1,79 @@
+{% extends 'admin/layout.html.twig' %}
+
+{% block body_id 'admin_product_index' %}
+
+{% block title %}Produkty{% endblock %}
+
+{% block main %}
+    <h1>Produkty</h1>
+    <table class="table table-striped table-middle-aligned">
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Zdjęcie</th>
+                <th scope="col">Stan magazynowy</th>
+                <th scope="col">EAN</th>
+                <th scope="col">SKU</th>
+                <th scope="col">{{ 'label.title'|trans }}</th>
+                {# <th scope="col"><i class="fa fa-calendar" aria-hidden="true"></i> {{ 'label.published_at'|trans }}</th> #}
+                <th scope="col">Cena netto</th>
+                <th scope="col" class="text-center"><i class="fa fa-cogs" aria-hidden="true"></i> {{ 'label.actions'|trans }}</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for product in pagination %}
+            {% set parts = product.image|split('.') %}
+            <tr>
+                <td>{{ product.productId }}</td>
+                {% if parts|length > 1 %}
+                    <td><img width="60px" src="{{ 'https://zielonysklep.pl/userdata/public/gfx/' ~ product.gfxId ~ '/' ~ product.image }}" alt="Product Image"></td>
+                {% else %}
+                    <td><img width="60px" src="{{ 'https://zielonysklep.pl/userdata/public/gfx/' ~ product.gfxId ~ '/' ~ product.image ~ '.jpg' }}" alt="Product Image"></td>
+                {% endif %}
+                {% if product.stock is null %}
+                    <td>0</td>
+                {% else %}
+                    <td>{{ product.stock.stock }}</td>
+                {% endif %}
+                <td>{{ product.EAN }}</td>
+                <td>{{ product.SKU }}</td>
+                <td>{{ product.name }}</td>
+                {# <td>{{ product.dateEdit|format_datetime('medium', 'short', '', 'GMT+1')}}</td> #}
+                <td>{{ product.priceWholesale }}</td>
+                <td class="text-right">
+                 <div class="item-actions">
+                    <a href="{{ path('app_product_show', {product_id: product.productId}) }}" class="btn btn-sm btn-default">
+                        <i class="fa fa-eye" aria-hidden="true"></i> {{ 'action.show'|trans }}
+                    </a>
+                    <a href="{{ path('app_product_edit', {product_id: product.productId}) }}" class="btn btn-sm btn-primary">
+                        <i class="fa fa-edit" aria-hidden="true"></i> {{ 'action.edit'|trans }}
+                    </a>
+                  </div>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5" align="center">{{ 'post.no_posts_found'|trans }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <div class="navigation text-center"> 
+    {{ knp_pagination_render(pagination) }} 
+    </div> 
+{% endblock %}
+{% block sidebar %}
+    <div class="section actions">
+        <a href="{{ path('app_product_new') }}" class="btn btn-lg btn-block btn-success">
+            <i class="fa fa-plus" aria-hidden="true"></i> {{ 'Dodaj nowy produkt' }}
+        </a>
+    </div>
+    <form action="{{ path('app_update_products_command') }}" method="post">
+        <button class="btn btn-lg btn-block btn-success" id="update-products-btn"><i class="fa-solid fa-download"></i> Aktualizuj produkty</button>
+    </form>
+
+    {{ parent() }}
+
+    {{ show_source_code(_self) }}
+{% endblock %}
+

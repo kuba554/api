@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New CategoriesTree{% endblock %}
+
+{% block body %}
+    <h1>Create new CategoriesTree</h1>
+
+    {{ include('categories_tree/_form.html.twig') }}
+
+    <a href="{{ path('app_categories_tree_index') }}">back to list</a>
+{% endblock %}

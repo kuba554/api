@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Product{% endblock %}
+
+{% block main %}
+    <h4>Dodaj nowy produkt</h4>
+    <div style="color:red">{{info_shoper}}</div>
+    <div style="color:red">{{info_b2b}}</div>
+    {{ include('admin/product/_form.html.twig') }}
+    <a href="{{ path('app_product_index') }}">Powrót do listy</a>
+{% endblock %}
+{% block sidebar %}
+    <div class="sidebar-item">
+    <a href="{{ path('app_product_images_new') }}">
+            Galeria
+    </a>
+    </div>
+    <div class="sidebar-item">
+        <a href="{{ path('app_categories_tree_edit', {'id': 1}) }}">
+                Kategoria dodatkowa
+        </a>
+    </div>
+    <a href="{{ path('app_product_stock_new', { 'info_shoper': info_shoper }) }}" class="btn btn-lg btn-block btn-success">Dodaj wariant produktu</a>
+
+    {{ show_source_code(_self) }}
+{% endblock %}
+

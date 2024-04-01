@@ -1,0 +1,3 @@
+<?php //660935293bdc30c8d0d98fa84894f822
+
+return [PHP_INT_MAX, 'vendor/flatpickr/dist/l10n.js'];

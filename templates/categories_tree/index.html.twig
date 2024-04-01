@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}CategoriesTree index{% endblock %}
+
+{% block body %}
+    <h1>CategoriesTree index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Tree_id</th>
+                <th>Children</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {# {% for categories_tree in categories_trees %}
+            <tr>
+                <td>{{ categories_tree.id }}</td>
+                <td>{{ categories_tree.treeId }}</td>
+                <td>{{ categories_tree.children ? categories_tree.children|join(', ') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_categories_tree_show', {'id': categories_tree.id}) }}">show</a>
+                    <a href="{{ path('app_categories_tree_edit', {'id': categories_tree.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %} #}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_categories_tree_new') }}">Create new</a>
+{% endblock %}

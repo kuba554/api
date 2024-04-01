@@ -1,0 +1,3 @@
+<?php //50c045387e0ff82c40328b78c5ba9490
+
+return [PHP_INT_MAX, 'vendor/@fortawesome/fontawesome-free/webfonts/fa-regular-400.ttf'];

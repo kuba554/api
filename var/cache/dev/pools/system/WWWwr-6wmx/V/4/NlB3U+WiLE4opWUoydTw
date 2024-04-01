@@ -1,0 +1,3 @@
+<?php //59370b15ee79f02b91391515dbf5e292
+
+return [PHP_INT_MAX, 'styles/bootstrap-tagsinput.css'];

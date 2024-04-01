@@ -1,0 +1,3 @@
+<?php //3c50ed7c9bc62dfacb5fc4ba7f0b88d0
+
+return [PHP_INT_MAX, 'vendor/flatpickr/dist/flatpickr.min.css'];

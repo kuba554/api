@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nowy wariant{% endblock %}
+
+{# <button type="button" class="btn btn-default btn-lg btn-block" data-toggle="modal" data-target="#sourceCodeModal">
+      <i class="fa fa-cogs" aria-hidden="true"></i> {{ 'action.app_product_stock_new'|trans }}
+</button> #}
+
+{% block body %}
+    <h1>Dodaj nowy wariant</h1>
+    <div class=""></div>
+    {{ include('product_stock/_form.html.twig') }}                   
+    <a href="{{ path('app_product_stock_index') }}">back to list</a>
+{% endblock %}

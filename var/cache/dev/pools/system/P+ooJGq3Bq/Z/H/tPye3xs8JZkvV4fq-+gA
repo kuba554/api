@@ -1,0 +1,3 @@
+<?php //56e7e471e7bdb13fa455df365d7d9f9f
+
+return [PHP_INT_MAX, 'styles/app.scss'];

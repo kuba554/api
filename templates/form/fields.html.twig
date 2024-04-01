@@ -8,23 +8,19 @@
 #}
 
 {% block date_time_picker_widget %}
-    <div class="input-group date">
+    <div class="input-group date" data-toggle="datetimepicker">
         {{ block('datetime_widget') }}
-        <div class="input-group-append">
-            <button type="button" class="btn btn-outline-secondary">
-                <span class="fa fa-calendar" aria-hidden="true"></span>
-            </button>
-        </div>
+        <span class="input-group-addon">
+            <span class="fa fa-calendar" aria-hidden="true"></span>
+        </span>
     </div>
 {% endblock %}
 
 {% block tags_input_widget %}
     <div class="input-group">
         {{ form_widget(form, {'attr': {'data-toggle': 'tagsinput', 'data-tags': tags|json_encode}}) }}
-        <div class="input-group-append">
-            <span class="input-group-text">
-                <span class="fa fa-tags" aria-hidden="true"></span>
-            </span>
-        </div>
+        <span class="input-group-addon">
+            <span class="fa fa-tags" aria-hidden="true"></span>
+        </span>
     </div>
 {% endblock %}

@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ApiTest{% endblock %}
+
+{% block body %}
+    <h1>ApiTest</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ api_test.id }}</td>
+            </tr>
+            <tr>
+                <th>Descryption</th>
+                <td>{{ api_test.descryption }}</td>
+            </tr>
+            <tr>
+                <th>Value</th>
+                <td>{{ api_test.value }}</td>
+            </tr>
+            <tr>
+                <th>CoolFactor</th>
+                <td>{{ api_test.coolFactor }}</td>
+            </tr>
+            <tr>
+                <th>CreatedAt</th>
+                <td>{{ api_test.createdAt ? api_test.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>IsPublished</th>
+                <td>{{ api_test.isPublished ? 'Yes' : 'No' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_api_test_index') }}">back to list</a>
+
+    <a href="{{ path('app_api_test_edit', {'id': api_test.id}) }}">edit</a>
+
+    {{ include('api_test/_delete_form.html.twig') }}
+{% endblock %}

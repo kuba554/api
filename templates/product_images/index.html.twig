@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ProductImages index{% endblock %}
+
+{% block body %}
+    <h1>ProductImages index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Gfx_id</th>
+                <th>Product_id</th>
+                <th>Main</th>
+                <th>Order_sord</th>
+                <th>Name</th>
+                <th>Unic_name</th>
+                <th>Hidden</th>
+                <th>Extension</th>
+                <th>Translations</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for product_image in product_gallery %}
+            <tr>
+                <td>{{ product_image.id }}</td>
+                <td>{{ product_image.gfxId }}</td>
+                <td>{{ product_image.productId }}</td>
+                <td>{{ product_image.main ? 'Yes' : 'No' }}</td>
+                <td>{{ product_image.orderSord }}</td>
+                <td>{{ product_image.name }}</td>
+                <td>{{ product_image.unicName }}</td>
+                <td>{{ product_image.hidden ? 'Yes' : 'No' }}</td>
+                <td>{{ product_image.extension }}</td>
+                {# <td>{{ product_image.translations }}</td> #}
+                <td>
+                    <a href="{{ path('app_product_images_show', {'id': product_image.id}) }}">show</a>
+                    <a href="{{ path('app_product_images_edit', {'product_id': product_image.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="11">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_product_images_new') }}">Create new</a>
+{% endblock %}

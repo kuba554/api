@@ -1,0 +1,11 @@
+<form method="post" action="{{ path('app_product_images_delete', {'id': item.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ item.id) }}">
+    <div class="col_auto-trash">
+        <button class="btn trash-button"><i class="fa-solid fa-trash-can"></i></button>
+        <span class="tooltip">
+            <span class="tooltip__container">
+                Usuń zdjęcie
+            </span>
+        </span>
+    </div>
+</form>

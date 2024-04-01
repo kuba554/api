@@ -1,0 +1,142 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ProductStock{% endblock %}
+
+{% block body %}
+    <h1>ProductStock</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ product_stock.id }}</td>
+            </tr>
+            <tr>
+                <th>Stock_id</th>
+                <td>{{ product_stock.stockId }}</td>
+            </tr>
+            <tr>
+                <th>Product_id</th>
+                <td>{{ product_stock.productId }}</td>
+            </tr>
+            <tr>
+                <th>Price</th>
+                <td>{{ product_stock.price }}</td>
+            </tr>
+            <tr>
+                <th>Extended</th>
+                <td>{{ product_stock.extended ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Price_type</th>
+                <td>{{ product_stock.priceType }}</td>
+            </tr>
+            <tr>
+                <th>Active</th>
+                <td>{{ product_stock.active ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Default_stock</th>
+                <td>{{ product_stock.defaultStock ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Stock</th>
+                <td>{{ product_stock.stock }}</td>
+            </tr>
+            <tr>
+                <th>Warehouses</th>
+                <td>{{ product_stock.warehouses ? product_stock.warehouses|join(', ') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Warn_level</th>
+                <td>{{ product_stock.warnLevel }}</td>
+            </tr>
+            <tr>
+                <th>Sold</th>
+                <td>{{ product_stock.sold }}</td>
+            </tr>
+            <tr>
+                <th>Code</th>
+                <td>{{ product_stock.code }}</td>
+            </tr>
+            <tr>
+                <th>Ean</th>
+                <td>{{ product_stock.ean }}</td>
+            </tr>
+            <tr>
+                <th>Weight</th>
+                <td>{{ product_stock.weight }}</td>
+            </tr>
+            <tr>
+                <th>Weight_type</th>
+                <td>{{ product_stock.weightType }}</td>
+            </tr>
+            <tr>
+                <th>Availiability_id</th>
+                <td>{{ product_stock.availiabilityId }}</td>
+            </tr>
+            <tr>
+                <th>Delivery_id</th>
+                <td>{{ product_stock.deliveryId }}</td>
+            </tr>
+            <tr>
+                <th>Gfx_id</th>
+                <td>{{ product_stock.gfxId }}</td>
+            </tr>
+            <tr>
+                <th>Options</th>
+                <td>{{ product_stock.options ? product_stock.options|join(', ') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Package</th>
+                <td>{{ product_stock.package }}</td>
+            </tr>
+            <tr>
+                <th>Price_wholesale</th>
+                <td>{{ product_stock.priceWholesale }}</td>
+            </tr>
+            <tr>
+                <th>Price_special</th>
+                <td>{{ product_stock.priceSpecial }}</td>
+            </tr>
+            <tr>
+                <th>Price_type_wholesale</th>
+                <td>{{ product_stock.priceTypeWholesale }}</td>
+            </tr>
+            <tr>
+                <th>Price_type_special</th>
+                <td>{{ product_stock.priceTypeSpecial }}</td>
+            </tr>
+            <tr>
+                <th>Price_buying</th>
+                <td>{{ product_stock.priceBuying }}</td>
+            </tr>
+            <tr>
+                <th>Calculation_unit_id</th>
+                <td>{{ product_stock.calculationUnitId }}</td>
+            </tr>
+            <tr>
+                <th>Calculation_unit_ratio</th>
+                <td>{{ product_stock.calculationUnitRatio }}</td>
+            </tr>
+            <tr>
+                <th>Historical_lowest_price</th>
+                <td>{{ product_stock.historicalLowestPrice }}</td>
+            </tr>
+            <tr>
+                <th>Wholesale_historical_lowest_price</th>
+                <td>{{ product_stock.wholesaleHistoricalLowestPrice }}</td>
+            </tr>
+            <tr>
+                <th>Special_historical_lowest_price</th>
+                <td>{{ product_stock.specialHistoricalLowestPrice }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_product_stock_index') }}">back to list</a>
+
+    <a href="{{ path('app_product_stock_edit', {'id': product_stock.id}) }}">edit</a>
+
+    {{ include('product_stock/_delete_form.html.twig') }}
+{% endblock %}

@@ -21,3 +21,8 @@ controllers:
         _locale: '%app_locales%'
     defaults:
         _locale: '%locale%'
+
+app_update_products_command:
+    path: /aktualizuj-produkty
+    controller: 'App\Controller\Admin\ProductController::updateProducts'
+    methods: ['POST'] # lub 'POST', w zależności od metody HTTP, którą chcesz użyć

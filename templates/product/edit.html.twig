@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Product{% endblock %}
+
+{% block main %}
+    <h1>Edycja produktu {{ product.productId }}</h1>
+    {{ include('admin/product/_form.html.twig', {'button_label': 'Update'}) }}
+    <a href="{{ path('app_product_index') }}">back to list</a>
+{% endblock %}
+
+{% block sidebar %}
+    {% set newId = id %}
+    {{ include('admin/product/sidebar.html.twig', { 'id': newId}) }}
+    <div class="sidebar-item">
+        <a href="{{ path('app_images_edit', {'product_id': product.productId }) }}">
+                Galeria
+        </a>
+    </div>
+    <div class="sidebar-item">Warianty
+        {% for item in stockVariants %}
+            <div><a href="{{ path('app_product_stock_edit', {'id': item.id }) }}">[{{ item.stockId }}]-{{ item.size }}</a></div>
+        {% endfor %}
+    </div>
+    <div class="sidebar-item">
+        <a href="{{ path('') }}">
+                Kategoria dodatkowa
+        </a>
+    </div>
+    {{ include('admin/product/_delete_form.html.twig') }}
+{% endblock %}

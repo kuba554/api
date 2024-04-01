@@ -21,7 +21,7 @@
 
             <trans-unit id="title.homepage">
                 <source>title.homepage</source>
-                <target><![CDATA[Witamy w aplikacji <strong>Symfony Demo</strong>]]></target>
+                <target><![CDATA[Witamy w aplikacji]]></target>
             </trans-unit>
             <trans-unit id="title.source_code">
                 <source>title.source_code</source>
@@ -41,7 +41,7 @@
             </trans-unit>
             <trans-unit id="title.post_list">
                 <source>title.post_list</source>
-                <target>Lista artykułów</target>
+                <target>Lista produktów</target>
             </trans-unit>
             <trans-unit id="title.edit_post">
                 <source>title.edit_post</source>
@@ -63,6 +63,10 @@
             <trans-unit id="action.show_code">
                 <source>action.show_code</source>
                 <target>Pokaż kod</target>
+            </trans-unit>
+            <trans-unit id="action.app_product_stock_new">
+                <source>action.app_product_stock_new</source>
+                <target>Dodaj wariant</target>
             </trans-unit>
             <trans-unit id="action.edit">
                 <source>action.edit</source>
@@ -188,11 +192,11 @@
             </trans-unit>
             <trans-unit id="menu.post_list">
                 <source>menu.post_list</source>
-                <target>Lista artykułów</target>
+                <target>Lista produktów</target>
             </trans-unit>
             <trans-unit id="menu.back_to_blog">
                 <source>menu.back_to_blog</source>
-                <target>Powrót do bloga</target>
+                <target>Strona główna</target>
             </trans-unit>
             <trans-unit id="menu.homepage">
                 <source>menu.homepage</source>
@@ -245,15 +249,15 @@
             </trans-unit>
             <trans-unit id="help.show_code">
                 <source>help.show_code</source>
-                <target><![CDATA[Kliknij poniższy przycisk, aby zobaczyć kod <strong>kontrolera</strong> oraz <strong>szablonu</strong> użytych podczas generowania tej podstrony.]]></target>
+                <target></target>
             </trans-unit>
             <trans-unit id="help.browse_app">
                 <source>help.browse_app</source>
-                <target><![CDATA[Przeglądaj <strong>publiczną część</strong> aplikacji demonstracyjnej.]]></target>
+                <target><![CDATA[Przeglądaj <strong>publiczną część</strong> aplikacji.]]></target>
             </trans-unit>
             <trans-unit id="help.browse_admin">
                 <source>help.browse_admin</source>
-                <target><![CDATA[Przeglądaj <strong>panel administracyjny</strong> aplikacji demonstracyjnej.]]></target>
+                <target><![CDATA[Przeglądaj <strong>panel administracyjny</strong> aplikacji.]]></target>
             </trans-unit>
             <trans-unit id="help.login_users">
                 <source>help.login_users</source>
@@ -278,6 +282,10 @@
             <trans-unit id="help.more_information">
                 <source>help.more_information</source>
                 <target><![CDATA[Sprawdź <a href="https://symfony.com/doc">dokumentację Symfony</a>, aby uzyskać więcej informacji.]]></target>
+            </trans-unit>
+            <trans-unit id="product.search_for">
+                <source>product.search_for</source>
+                <target>Szukaj przez ean sku nazwa produktu...</target>
             </trans-unit>
 
             <trans-unit id="paginator.previous">

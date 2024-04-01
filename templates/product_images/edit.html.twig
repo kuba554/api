@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Galeria{% endblock %}
+
+{% block body %}
+    <h1>Galeria</h1>
+    <div class="image-gallery">
+    {% for item in product_gallery %}
+        <div class="image">
+        {% set parts = item.name|split('.') %}
+        {% if parts|length > 1 %}
+            <a id="img-stock" href="{{ 'https://zielonysklep.pl/userdata/public/gfx/' ~ item.gfxId ~ '/' ~ item.name }}"><img width="180px" src="{{ 'https://zielonysklep.pl/userdata/public/gfx/' ~ item.gfxId ~ '/' ~ item.name }}" alt="Product Image"></a>
+        {% else %}
+            <a id="img-stock" href="{{ 'https://zielonysklep.pl/userdata/public/gfx/' ~ item.gfxId ~ '/' ~ item.name }}"><img width="180px" src="{{ 'https://zielonysklep.pl/userdata/public/gfx/' ~ item.gfxId ~ '/' ~ item.name ~ '.jpg' }}" alt="Product Image"></a>
+        {% endif %}
+        <div class="photo-action-bar">
+        <div class="row row_hbetween">
+            <div class="col_auto-bar">
+                <button class="btn"><i class="fa-solid fa-bars"></i></button>
+                <span class="tooltip">
+                    <a data-href="" data-prompt-title="Edytuj opis zdjęcia" data-prompt-value="c0eb2a3bb9809fe78c921ed0af0bd9fb" data-prompt-name="gfx_name" aria-label="Edytuj opis zdjęcia"></a>
+                    <span class="tooltip__container">
+                        Edytuj opis zdjęcia
+                    </span>
+                </span>
+            </div>
+            {{ include('product_images/_delete_form.html.twig') }}
+        </div>
+        </div>										
+        </div>
+    {% endfor %}
+    </div>
+
+    {{ include('product_images/_form.html.twig', {'button_label': 'Zaktualizuj'}) }}
+
+    <a href="{{ path('app_product_images_index') }}">Powrót do edycji produktu</a>
+{% endblock %}

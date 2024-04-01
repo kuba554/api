@@ -29,14 +29,19 @@ use Symfony\Component\String\Slugger\SluggerInterface;
  * @author Javier Eguiluz <javier.eguiluz@gmail.com>
  * @author Yonel Ceruto <yonelceruto@gmail.com>
  */
-final class PostType extends AbstractType
+class PostType extends AbstractType
 {
+    private $slugger;
+
     // Form types are services, so you can inject other services in them if needed
-    public function __construct(
-        private readonly SluggerInterface $slugger
-    ) {
+    public function __construct(SluggerInterface $slugger)
+    {
+        $this->slugger = $slugger;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         // For the full reference of options defined by each form field type
@@ -74,15 +79,18 @@ final class PostType extends AbstractType
             // of the form handling process.
             // See https://symfony.com/doc/current/form/events.html
             ->addEventListener(FormEvents::SUBMIT, function (FormEvent $event) {
-                /** @var Post $post */
+                /** @var Post */
                 $post = $event->getData();
-                if (null === $post->getSlug() && null !== $post->getTitle()) {
-                    $post->setSlug($this->slugger->slug($post->getTitle())->lower());
+                if (null !== $postTitle = $post->getTitle()) {
+                    $post->setSlug($this->slugger->slug($postTitle)->lower());
                 }
             })
         ;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([

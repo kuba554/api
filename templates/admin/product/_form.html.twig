@@ -1,0 +1,52 @@
+{{ form_start(form) }}
+    
+    <span class="section-text">Informacje podstawowe</span>
+    <div class="section">
+        {{ form_row(form.product_type) }}
+        {# {{ show_app_product_stock(_self) }} #}
+        {{ form_row(form.name) }}
+        {{ form_row(form.SKU) }}
+        {{ form_row(form.EAN) }}
+        {{ form_row(form.delivery_time) }}
+        {{ form_row(form.producer_id) }}
+        {{ form_row(form.stock_active) }}
+        {{ form_row(form.stock_weight) }}
+    </div>
+
+    {# <span class="section-text">Zdjęcie główne</span>
+    <div class="section">
+        {{ form_row(form.image) }}
+    </div> #}
+    <span class="section-text">Opis produktu</span>
+    <div class="section">
+        {{ form_row(form.description) }}
+    </div>
+
+    {# Sekcja 2 #}
+    <span class="section-text">Ceny</span>
+    <div class="section">
+        {{ form_row(form.price_wholesale) }}
+        {{ form_row(form.price_suggested) }}
+        {{ form_row(form.taxes) }}
+    </div>
+
+    {# Sekcja 3 #}
+    <span class="section-text">Magazyn</span>
+    <div class="section">
+        {{ form_row(form.stock_stock) }}
+        {{ form_row(form.units) }}
+    </div>
+    <div class="section">
+    <span class="section-text">Lokalizacja</span>
+        {{ form_row(form.category_id) }}  
+    </div>
+    <div class="section">
+    <span class="section-text">Atrybuty</span>
+        {{ form_row(form.attributes1) }}
+        {{ form_row(form.attributes2) }}
+        {{ form_row(form.attributes3) }}
+    </div>
+    <div class="section actions">
+        <button class="btn btn-lg btn-block btn-success b2b">Zaktualizuj produkt</button>
+    </div>
+{{ form_end(form) }}

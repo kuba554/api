@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Attributes index{% endblock %}
+
+{% block body %}
+    <h1>Attributes index</h1>
+
+        <label for="attribute">KAMUFLAŻ I KOLOR</label>
+        <select name="cars" id="cars">
+        {% for attribute in attributes %}
+                <option value="name">{{ attribute.name }}</option>
+         {% endfor %}
+        </select>
+        
+    
+
+    <a href="{{ path('app_attributes_new') }}">Create new</a>
+{% endblock %}

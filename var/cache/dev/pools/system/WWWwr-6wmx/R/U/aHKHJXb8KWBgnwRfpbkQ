@@ -1,0 +1,3 @@
+<?php //fde437326ded462ef8d4f161105bdb98
+
+return [PHP_INT_MAX, 'vendor/typeahead.js/typeahead.js.index.js'];

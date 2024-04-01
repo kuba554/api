@@ -1,0 +1,3 @@
+<?php //dc7997d00b535dca5656bb770ab802c2
+
+return [PHP_INT_MAX, 'vendor/component-emitter/component-emitter.index.js'];
